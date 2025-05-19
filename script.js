@@ -1,4 +1,33 @@
+const desiredChainId = "0xc474"; // Somnia Testnet (если другой — замени)
+const chainData = {
+  chainId: desiredChainId,
+  chainName: "Somnia Testnet",
+  rpcUrls: ["https://rpc.testnet.somnia.network"],
+  nativeCurrency: {
+    name: "Somnia",
+    symbol: "SOM",
+    decimals: 18
+  },
+  blockExplorerUrls: ["https://explorer.testnet.somnia.network"]
+};
 
+async function switchNetwork() {
+  try {
+    await window.ethereum.request({
+      method: "wallet_switchEthereumChain",
+      params: [{ chainId: desiredChainId }],
+    });
+  } catch (switchError) {
+    if (switchError.code === 4902) {
+      await window.ethereum.request({
+        method: "wallet_addEthereumChain",
+        params: [chainData],
+      });
+    } else {
+      console.error("Ошибка сети:", switchError);
+    }
+  }
+}
 let provider;
 let signer;
 let contract;
@@ -16,6 +45,8 @@ let timerInterval;
 
 document.addEventListener("DOMContentLoaded", async () => {
   if (window.ethereum) {
+    await switchNetwork(); // 
+    
     provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     signer = provider.getSigner();
@@ -27,6 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     alert("Please install MetaMask to use this site.");
   }
 });
+
 
 async function startSprint() {
   try {
