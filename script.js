@@ -2,7 +2,7 @@
 let provider;
 let signer;
 let contract;
-let contractAddress = "0xcbdebd958d614ec97ecb61c1bcbdeb4722036dc"; // заменяем на твой адрес
+let contractAddress = "0xcbe6bd9856d841ee97ecb6a1b1ccddeb472203d6";
 let abi = [
   "function startSprint() public",
   "function tap() public",
