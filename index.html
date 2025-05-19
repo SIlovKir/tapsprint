@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TapSprint on Somnia</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <h1>🖱️ Tap Sprint</h1>
+    <button id="startButton">Start Sprint (30s)</button>
+    <div id="gameArea" style="display:none;">
+      <p>Time left: <span id="timer">30</span>s</p>
+      <button id="tapButton">TAP!</button>
+      <p>Your taps: <span id="tapCount">0</span></p>
+      <p>Your best score: <span id="bestScore">0</span></p>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
