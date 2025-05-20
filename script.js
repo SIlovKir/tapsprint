@@ -1,4 +1,4 @@
-const desiredChainId = "0xc468";
+const desiredChainId = "0xc488";
 const chainData = {
   chainId: desiredChainId,
   chainName: "Somnia Testnet",
